@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportAlumno" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f8b91cb-58c4-45bf-b70e-ae40bd925602">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     alumno.`IdAlumno` AS alumno_IdAlumno,
+     alumno.`ApeAlumno` AS alumno_ApeAlumno,
+     alumno.`NomAlumno` AS alumno_NomAlumno,
+     alumno.`PROCE` AS alumno_PROCE,
+     especialidad.`Nomesp` AS especialidad_Nomesp
+FROM
+     `especialidad` especialidad INNER JOIN `alumno` alumno ON especialidad.`Idesp` = alumno.`Idesp`]]>
+	</queryString>
+	<field name="alumno_IdAlumno" class="java.lang.String"/>
+	<field name="alumno_ApeAlumno" class="java.lang.String"/>
+	<field name="alumno_NomAlumno" class="java.lang.String"/>
+	<field name="alumno_PROCE" class="java.lang.String"/>
+	<field name="especialidad_Nomesp" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="196" y="28" width="175" height="31" uuid="c20f5ce2-0f23-4093-a030-d20f4cb53c65"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Listado de Alumnos]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="397" y="59" width="155" height="20" uuid="ee4ccd24-7e2e-4d0b-b391-e8161fcaf539"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="116" y="2" width="100" height="20" uuid="7a4fe279-5447-412a-bfa6-d86974a773eb"/>
+				<text><![CDATA[Codigo Alumno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="2" width="100" height="20" uuid="84f25d64-89b0-4b5a-bef1-937813959624"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="0" width="100" height="20" uuid="996d444d-65da-42a5-b01b-c2598aab422f"/>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="2" width="100" height="20" uuid="de13789f-a737-479e-af08-82088fb41274"/>
+				<text><![CDATA[Procedencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="0e6648ad-579e-43cf-bc6f-173009bf7e5f"/>
+				<text><![CDATA[Especialidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="116" y="0" width="100" height="20" uuid="05820fce-0a1f-441d-ad9d-c39f0ea5ab3b"/>
+				<textFieldExpression><![CDATA[$F{alumno_IdAlumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="0" width="100" height="20" uuid="0966e9bb-d34f-41a5-afcf-61b9b791fec8"/>
+				<textFieldExpression><![CDATA[$F{alumno_NomAlumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="0" width="100" height="20" uuid="5cdbf69b-0e60-4eca-95d2-8c7b55490f4f"/>
+				<textFieldExpression><![CDATA[$F{alumno_ApeAlumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="465" y="0" width="100" height="20" uuid="d982b758-51de-4fb2-9248-ba49e08cd25c"/>
+				<textFieldExpression><![CDATA[$F{alumno_PROCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="d1c19f55-a4ed-4424-bed8-fa493599c39e"/>
+				<textFieldExpression><![CDATA[$F{especialidad_Nomesp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="38" splitType="Stretch">
+			<textField>
+				<reportElement x="230" y="11" width="100" height="20" uuid="f299b7d8-f852-4c64-af68-bf22fab0c957"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="1" splitType="Stretch"/>
+	</summary>
+</jasperReport>
